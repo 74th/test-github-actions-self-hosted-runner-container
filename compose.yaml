@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: image/
+      dockerfile: Dockerfile
+    image: gcr.io/nnyn-dev/test/github-actions-runner:latest
+    environment:
+      - OWNER=74th
+      - REPO=testing-github-actions-self-hosted-runner-container

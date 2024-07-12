@@ -1,0 +1,15 @@
+name: run
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  backup:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: network
+        run: |
+          curl https://tsubaki.74th.tech/api/ip
