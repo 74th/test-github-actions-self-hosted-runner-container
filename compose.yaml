@@ -7,4 +7,5 @@ services:
     image: gcr.io/nnyn-dev/test/github-actions-runner:latest
     environment:
       - OWNER=74th
+      - ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       - REPO=testing-github-actions-self-hosted-runner-container

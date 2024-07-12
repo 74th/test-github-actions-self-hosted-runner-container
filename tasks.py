@@ -12,4 +12,4 @@ def build(c):
 @task
 def run(c):
     access_token = os.environ["GITHUB_ACCESS_TOKEN"]
-    c.run(f"docker compose run -i --rm --env 'ACCESS_TOKEN={access_token}' app")
+    c.run(f"docker compose up")

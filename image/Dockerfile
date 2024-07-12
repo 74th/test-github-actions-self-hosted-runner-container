@@ -28,4 +28,8 @@ COPY ./run.sh /home/runner
 
 USER runner
 
+WORKDIR /home/runner
+
+COPY ./src .
+
 ENTRYPOINT ["/home/runner/run.sh"]

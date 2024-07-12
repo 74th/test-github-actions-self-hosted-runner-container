@@ -1,12 +1,13 @@
-name: run
+name: hello
 
 on: push
 
 jobs:
-  backup:
+  hello:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: network
+      - name: hello
         run: |
-          curl https://github.com/74th.keys
+          cd /home/runner
+          python src/hello.py
