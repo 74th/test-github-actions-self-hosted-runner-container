@@ -21,3 +21,7 @@ def down(c):
 @task
 def deploy(c):
     c.run("kubectl apply -k manifests")
+
+@task
+def remove(c):
+    c.run("kubectl delete -k manifests")
