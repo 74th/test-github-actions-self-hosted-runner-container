@@ -10,4 +10,4 @@ jobs:
       - name: hello
         run: |
           cd /home/runner
-          python src/hello.py
+          python3 src/hello.py

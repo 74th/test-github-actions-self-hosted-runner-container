@@ -7,9 +7,13 @@ load_dotenv()
 
 @task
 def build(c):
+    c.run("docker compose rm -f", warn=True)
     c.run("docker compose build")
 
 @task
-def run(c):
-    access_token = os.environ["GITHUB_ACCESS_TOKEN"]
-    c.run(f"docker compose up")
+def up(c):
+    c.run("docker compose up")
+
+@task
+def down(c):
+    c.run("docker compose down")

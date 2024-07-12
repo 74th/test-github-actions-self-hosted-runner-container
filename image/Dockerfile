@@ -30,6 +30,6 @@ USER runner
 
 WORKDIR /home/runner
 
-COPY ./src .
+COPY ./src ./src
 
 ENTRYPOINT ["/home/runner/run.sh"]
