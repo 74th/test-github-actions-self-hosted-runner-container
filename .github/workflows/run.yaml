@@ -9,4 +9,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: network
         run: |
-          curl https://tsubaki.74th.tech/api/ip
+          curl https://github.com/74th.keys
