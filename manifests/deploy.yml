@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: runner
+  template:
+    metadata:
+      labels:
+        app: runner
+    spec:
+      containers:
+        - name: runner
+          image: gcr.io/nnyn-dev/test/github-actions-runner:latest
+          env:
+            - name: OWNER
+              value: 74th
+            - name: REPO
+              value: testing-github-actions-self-hosted-runner-container
+          envFrom:
+            - secretRef:
+                name: access-token

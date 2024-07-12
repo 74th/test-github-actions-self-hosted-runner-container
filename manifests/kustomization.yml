@@ -1,0 +1,7 @@
+namespace: actions-test
+secretGenerator:
+  - name: access-token
+    envs:
+      - secret/access_token.env
+resources:
+  - deploy.yml

@@ -17,3 +17,7 @@ def up(c):
 @task
 def down(c):
     c.run("docker compose down")
+
+@task
+def deploy(c):
+    c.run("kubectl apply -k manifests")
