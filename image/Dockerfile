@@ -2,11 +2,12 @@ FROM ubuntu:24.04
 
 ARG RUNNER_VERSION="2.317.0"
 
-RUN rm /etc/apt/sources.list && \
-    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble main restricted universe multiverse" > /etc/apt/sources.list ;\
-    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list ;\
-    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list ;\
-    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-backports main restricted universe multiverse" >> /etc/apt/sources.list ;
+# aarch64での高速化用
+# RUN rm /etc/apt/sources.list && \
+#     echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble main restricted universe multiverse" > /etc/apt/sources.list ;\
+#     echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list ;\
+#     echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list ;\
+#     echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-backports main restricted universe multiverse" >> /etc/apt/sources.list ;
 
 # github actions runnerに必要なパッケージの準備
 RUN apt-get update -y && \
