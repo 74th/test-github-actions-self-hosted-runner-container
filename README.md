@@ -10,8 +10,8 @@
 
 ## github actions runner 搭載の docker コンテナ
 
-- ![./image/Dockerfile](./image/Dockerfile): Dockerfile
-- ![./image/run.sh](./image/run.sh): コンテナ起動時に実行するスクリプト
+- [./image/Dockerfile](./image/Dockerfile): Dockerfile
+- [./image/run.sh](./image/run.sh): コンテナ起動時に実行するスクリプト
 
 ### Dockerfile のポイント
 
