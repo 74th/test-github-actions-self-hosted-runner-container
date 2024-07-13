@@ -1,20 +1,19 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ARG RUNNER_VERSION="2.317.0"
 
-RUN echo "deb http://free.nchc.org.tw/ubuntu-ports/ jammy main restricted universe multiverse" > /etc/apt/sources.list ;\
-echo "deb http://free.nchc.org.tw/ubuntu-ports/ jammy-security main restricted universe multiverse" >> /etc/apt/sources.list ;\
-echo "deb http://free.nchc.org.tw/ubuntu-ports/ jammy-updates main restricted universe multiverse" >> /etc/apt/sources.list ;\
-echo "deb http://free.nchc.org.tw/ubuntu-ports/ jammy-backports main restricted universe multiverse" >> /etc/apt/sources.list ;
+RUN rm /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble main restricted universe multiverse" > /etc/apt/sources.list ;\
+    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list ;\
+    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list ;\
+    echo "deb http://free.nchc.org.tw/ubuntu-ports/ noble-backports main restricted universe multiverse" >> /etc/apt/sources.list ;
 
-RUN apt-get update -y
-RUN apt-get install -y \
-    curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip \
-    ca-certificates gnupg lsb-release unzip git \
-    libicu-dev
+# github actions runnerに必要なパッケージの準備
+RUN apt-get update -y && \
+    apt-get install -y curl jq ca-certificates git libicu-dev
 
-RUN groupadd -g 1000 runner
-RUN useradd -m -g 1000 runner
+RUN groupadd -g 999 runner
+RUN useradd -m -g 999 runner
 RUN mkdir -p /home/runner/actions-runner
 
 WORKDIR /home/runner/actions-runner
@@ -24,11 +23,12 @@ RUN curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VER
 
 COPY ./run.sh /home/runner
 
+# CI に必要な環境の準備
+WORKDIR /home/runner
+COPY ./src ./src
+RUN apt-get install -y python3
+
 USER runner
 
-WORKDIR /home/runner
-
-# CI に必要な環境
-COPY ./src ./src
 
 ENTRYPOINT ["/home/runner/run.sh"]

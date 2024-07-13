@@ -1,9 +1,4 @@
-import os
-
 from invoke.tasks import task
-from dotenv import load_dotenv
-
-load_dotenv()
 
 @task
 def build(c):

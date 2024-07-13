@@ -1,4 +1,5 @@
 #!/bin/bash
+# 参考: https://developers.play.jp/entry/2023/11/06/104430
 set -xe
 
 GITHUB_API_URL="https://api.github.com"
